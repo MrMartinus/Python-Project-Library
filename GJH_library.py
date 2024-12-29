@@ -147,12 +147,12 @@ def caesar_cipher(text="", offset=0, mode=0):
 #            |___/______|                  #
 ############################################
 """
-- Returns names from list alphabetically (case-insensitive)
+- Returns names from names list sorted alphabetically (case-insensitive)
 - Using variant of Selection sort, but in descending order
-- Argument list must contain only string values
+- Argument names must contain only string values
 
 Arguments:
-- list (list): Names to be sorted alphabetically
+- names (list): Names to be sorted alphabetically
 
 Examples:
 >>> print(my_sort(['DeAndre Jordan', 'Deanna Russo', 'Deandre Ayton']))
@@ -162,18 +162,18 @@ Output: ['Deandre Ayton', 'DeAndre Jordan', 'Deanna Russo']
 Output: ['Alojz', 'Bob', 'Cecil']
 """
 
-def my_sort(list):
-    if type(list) != type(["A", "B"]): # Fail-safe if list variable is not list error out
+def my_sort(names):
+    if type(names) != type(["A", "B"]): # Fail-safe if names is not list error out
         return "error"
     output = []  # Define output as an empty list
-    for name in range(len(list)):  # Loop repeats for the number of elements in the list
-        last = list[0]  # Set 'last' as the first element in the list
-        for name in list:  # Loop through all elements in the list
+    for name in range(len(names)):  # Loop, repeats for the number of elements in names
+        last = names[0]  # Set 'last' as the first element in names
+        for name in names:  # Loop through all elements in names
             if type(name) != type("A"): # Fail-safe if name is not string error out
                 return "error"
-            if name.lower() > last.lower():  # Finds the alphabetically last element in the list, case-insensitive
+            if name.lower() > last.lower():  # Finds the alphabetically last element in names, case-insensitive
                 last = name  # Set it as the current last element
-        list.remove(last)  # Remove the alphabetically last element from the list
+        names.remove(last)  # Remove the alphabetically last element from names
         output.insert(0, last)  # Insert the alphabetically last element at the beginning of the output list
     return output  # Return the sorted output list
 
