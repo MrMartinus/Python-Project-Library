@@ -55,6 +55,10 @@ Output: [0, 2, 4]
 
 >>> list(my_range(0,5))
 Output: [0, 1, 2, 3, 4]
+
+Possible improvements:
+- Change start value to optional
+- Make my_range fully compatible with range
 """
 
 def my_range(start=1,stop=1,step=1):
@@ -106,6 +110,9 @@ Output: Khoor zruog!
 Deciphering
 >>> print(caesar_cipher("Khoor zruog!",3,1))
 Output: Hello world!
+
+Possible improvements:
+- Remove the need for uppercase alphabet
 """
 
 def caesar_cipher(text="", offset=0, mode=0):
@@ -160,6 +167,9 @@ Output: ['Deandre Ayton', 'DeAndre Jordan', 'Deanna Russo']
 
 >>> print(my_sort(['Alojz', 'Cecil', 'Bob']))
 Output: ['Alojz', 'Bob', 'Cecil']
+
+Possible improvements:
+- Changing algorithm for more efective one
 """
 
 def my_sort(names):
@@ -199,6 +209,9 @@ Output: 13
 
 >>> print(fibonacci(15))
 Output: 610
+
+Possible improvements:
+- Add support for bigger numbers
 """
 
 def fibonacci(n):
