@@ -27,7 +27,7 @@ Criteria for Success:
 - Create four functions that meet the requirements and are at least somewhat effective
 - Ensure the code is clean, well commented and documented and check all PEP8 conventions
 - Include examples
-- Estimated time: 2 - 6 hours
+- Estimated time: 3 - 8 hours
 
 """
 
@@ -167,7 +167,7 @@ def my_sort(names):
         return "error"
     output = []  # Define output as an empty list
     for name in range(len(names)):  # Loop, repeats for the number of elements in names
-        last = names[0]  # Set 'last' as the first element in names
+        last = names[0]  # Set last as the first element in names
         for name in names:  # Loop through all elements in names
             if type(name) != type("A"): # Fail-safe if name is not string error out
                 return "error"
