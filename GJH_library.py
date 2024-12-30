@@ -21,7 +21,7 @@ Justification for the Library:
 - Main need for this library was learning purposes and familiarizing with coding conventions
   
 Constraints:
-- Editor: I have not fully customized my editor yet and I do not know all of it functions
+- Editor: I have not yet fully customized my editor and I do not know all of its functions
 
 Criteria for Success:
 - Create four functions that meet the requirements and are at least somewhat effective
