@@ -10,22 +10,22 @@
 """
 Author: Martin Sliva
 Date: 30.12.2024
-Licence: GPLv3
+License: GPLv3
 
-Analysis of Existing Libraries/Modules:
-- range(): Build-in function, represents an immutable sequence of numbers, commonly used in for loops
-- sorted(): Build-in function, returns a new sorted list from the items in iterable
+Analysis of existing libraries/modules:
+- range(): Built-in function, represents an immutable sequence of numbers, often used in for loops
+- sorted(): Built-in function, returns a new sorted list from the items in iterable
 - py-fibonacci library: External library, function fibonacci generates a fibonacci sequence
   
 Justification for the Library:
-- Main need for this library was learning purposes and familiarizing with coding conventions
+- Main need for this library was for learning purposes and familiarizing with coding conventions
   
 Constraints:
-- Editor: I have not yet fully customized my editor and I do not know all of its functions
+- Editor: I have not yet fully customized my editor and I do not know all of its features
 
-Criteria for Success:
-- Create four functions that meet the requirements and are at least somewhat effective
-- Ensure the code is clean, well commented and documented and check all PEP8 conventions
+Criteria for success:
+- Create four functions that meet the requirements, and are at least somewhat effective
+- Ensure the code is clean, well commented and documented, and check all PEP8 conventions
 - Include examples
 - Estimated time: 3 - 8 hours
 
@@ -45,8 +45,8 @@ Criteria for Success:
 - Can be used in for cycles
 
 Arguments:
-- start (int): Starting value
-- stop (int): Final value, is not counted to range
+- start (int): Start value
+- stop (int): End value, not counted in range
 - step (int, optional): Step between values, if not set defaults to 1
 
 Examples:
@@ -62,13 +62,13 @@ Possible improvements:
 """
 
 def my_range(start=1,stop=1,step=1):
-    if type(start) != type(1): # Fail-safe if start is not integer error out
+    if type(start) != type(1): # Failsafe if start is not integer error out
         return "error"
-    elif type(stop) != type(1): # Fail-safe if stop is not integer error out
+    elif type(stop) != type(1): # Failsafe if stop is not integer error out
         return "error"
-    elif type(step) != type(1): # Fail-safe if step is not integer error out
+    elif type(step) != type(1): # Failsafe if step is not integer error out
         return "error"
-    elif step == 0: # Fail-safe if the step is set to 0 error out
+    elif step == 0: # Failsafe if the step is set to 0 error out
         return "error"
     output = [] # Define output as an empty list
     if step > 0: # If step is positive
@@ -94,13 +94,13 @@ def my_range(start=1,stop=1,step=1):
 ################################################################
 """
 - Returns ciphered (or deciphered) text
-- Using english alphabet as ciphering alphabet
-- On unknown alphabetical characters print "?" (etc. diacritics)
+- Use English alphabet as cipher alphabet
+- Print "?" on unknown alphabetic characters (e. g. diacritics)
 
 Arguments:
-- text (str): Text to be ciphered (or deciphered)
-- offset (int, optional): Offset between characters in english alphabet (etc. A - C offset=3)
-- mode (int, optional): If set to one means deciphering
+- text (str): The text to cipher (or decipher)
+- offset (int, optional): Offset between characters in the English alphabet (e.g. A - C offset=3)
+- mode (int, optional): If set to one, means deciphering
 
 Examples:
 Ciphering
@@ -112,13 +112,13 @@ Deciphering
 Output: Hello world!
 
 Possible improvements:
-- Remove the need for uppercase alphabet
+- Remove the need for the uppercase alphabet
 """
 
 def caesar_cipher(text="", offset=0, mode=0):
-    if type(text) != type("A"): # Fail-safe if text is not string error out
+    if type(text) != type("A"): # Failsafe if text is not string error out
         return "error"
-    elif type(offset) != type(1): # Fail-safe if offset is not integer error out
+    elif type(offset) != type(1): # Failsafe if offset is not integer error out
         return "error"
     output = "" # Define output as empty string
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"] # Define alphabet
@@ -155,11 +155,11 @@ def caesar_cipher(text="", offset=0, mode=0):
 ############################################
 """
 - Returns names from names list sorted alphabetically (case-insensitive)
-- Using variant of Selection sort, but in descending order
+- Uses a variant of Selection sort, but in descending order
 - Argument names must contain only string values
 
 Arguments:
-- names (list): Names to be sorted alphabetically
+- names (list): Names to sort alphabetically
 
 Examples:
 >>> print(my_sort(['DeAndre Jordan', 'Deanna Russo', 'Deandre Ayton']))
@@ -169,17 +169,17 @@ Output: ['Deandre Ayton', 'DeAndre Jordan', 'Deanna Russo']
 Output: ['Alojz', 'Bob', 'Cecil']
 
 Possible improvements:
-- Changing algorithm for more efective one
+- Change the algorithm for a more efective one
 """
 
 def my_sort(names):
-    if type(names) != type(["A", "B"]): # Fail-safe if names is not list error out
+    if type(names) != type(["A", "B"]): # Failsafe if names is not list error out
         return "error"
     output = []  # Define output as an empty list
     for name in range(len(names)):  # Loop, repeats for the number of elements in names
         last = names[0]  # Set last as the first element in names
         for name in names:  # Loop through all elements in names
-            if type(name) != type("A"): # Fail-safe if name is not string error out
+            if type(name) != type("A"): # Failsafe if name is not string error out
                 return "error"
             if name.lower() > last.lower():  # Finds the alphabetically last element in names, case-insensitive
                 last = name  # Set it as the current last element
@@ -197,11 +197,11 @@ def my_sort(names):
 # |_| |_|_.__/ \___/|_| |_|\__,_|\___\___|_| #
 ##############################################
 """
-- Returns n (up to 20575) number from fibonacci sequence
-- Argument n must be positive and smaller than 20575
+- Returns n (up to 20575) number from the Fibonacci sequence
+- The argument n must be positive and less than 20575
 
 Arguments:
-- n (int): The order of the desired number from the fibonacci sequence
+- n (int): The order of the desired number from the Fibonacci sequence
 
 Examples:
 >>> print(fibonacci(7))
@@ -211,13 +211,13 @@ Output: 13
 Output: 610
 
 Possible improvements:
-- Add support for bigger numbers
+- Add support for larger numbers
 """
 
 def fibonacci(n):
-    if n < 0: # Fail-safe if n is set to negative value error out
+    if n < 0: # Failsafe if n is set to negative value error out
         return "error"
-    if n > 20575: # Fail-safe if n is set to negative value error out
+    if n > 20575: # Failsafe if n is set to negative value error out
         return "The number exceeds the limit of 20575"
     sequence = [0, 1] # List consisting of first two Fibonacci numbers
     previous = sequence[-2] # Set previous as second number from end of list
