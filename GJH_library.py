@@ -50,10 +50,10 @@ Arguments:
 - step (int, optional): Step between values, if not set defaults to 1
 
 Examples:
->>> list(my_range(0,5,2))
+>>> my_range(0,5,2)
 Output: [0, 2, 4]
 
->>> list(my_range(0,5))
+>>> my_range(0,5)
 Output: [0, 1, 2, 3, 4]
 
 Possible improvements:
@@ -62,11 +62,11 @@ Possible improvements:
 """
 
 def my_range(start=1,stop=1,step=1):
-    if type(start) != type(1): # Failsafe if start is not integer error out
+    if not isinstance(start, int): # Failsafe if start is not integer error out
         return "error"
-    elif type(stop) != type(1): # Failsafe if stop is not integer error out
+    elif not isinstance(stop, int): # Failsafe if stop is not integer error out
         return "error"
-    elif type(step) != type(1): # Failsafe if step is not integer error out
+    elif not isinstance(step, int): # Failsafe if step is not integer error out
         return "error"
     elif step == 0: # Failsafe if the step is set to 0 error out
         return "error"
@@ -116,9 +116,9 @@ Possible improvements:
 """
 
 def caesar_cipher(text="", offset=0, mode=0):
-    if type(text) != type("A"): # Failsafe if text is not string error out
+    if not isinstance(text, str): # Failsafe if text is not string error out
         return "error"
-    elif type(offset) != type(1): # Failsafe if offset is not integer error out
+    elif not isinstance(offset, int): # Failsafe if offset is not integer error out
         return "error"
     output = "" # Define output as empty string
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"] # Define alphabet
@@ -173,13 +173,13 @@ Possible improvements:
 """
 
 def my_sort(names):
-    if type(names) != type(["A", "B"]): # Failsafe if names is not list error out
+    if not isinstance(names, list): # Failsafe if names is not list error out
         return "error"
     output = []  # Define output as an empty list
     for name in range(len(names)):  # Loop, repeats for the number of elements in names
         last = names[0]  # Set last as the first element in names
         for name in names:  # Loop through all elements in names
-            if type(name) != type("A"): # Failsafe if name is not string error out
+            if not isinstance(name, str): # Failsafe if name is not string error out
                 return "error"
             if name.lower() > last.lower():  # Finds the alphabetically last element in names, case-insensitive
                 last = name  # Set it as the current last element
@@ -215,6 +215,8 @@ Possible improvements:
 """
 
 def fibonacci(n):
+    if not isinstance(n, int): # Failsafe if n is not integer error out
+        return "error"
     if n < 0: # Failsafe if n is set to negative value error out
         return "error"
     if n > 20575: # Failsafe if n is set to negative value error out
