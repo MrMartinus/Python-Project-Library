@@ -1,15 +1,6 @@
- #####        # #     #
-#     #       # #     #         #      # #####  #####    ##   #####  #   #
-#             # #     #         #      # #    # #    #  #  #  #    #  # #
-#  ####       # #######         #      # #####  #    # #    # #    #   #
-#     # #     # #     #         #      # #    # #####  ###### #####    #
-#     # #     # #     #         #      # #    # #   #  #    # #   #    #
- #####   #####  #     #         ###### # #####  #    # #    # #    #   #
-                        #######
-
 """
 Author: Martin Sliva
-Date: 30.12.2024
+Date: 1.3.2024
 License: GPLv3
 
 Analysis of existing libraries/modules:
@@ -32,36 +23,28 @@ Criteria for success:
 """
 
 
-####################################################
-#  _ __ ___  _   _     _ __ __ _ _ __   __ _  ___  #
-# | '_ ` _ \| | | |   | '__/ _` | '_ \ / _` |/ _ \ #
-# | | | | | | |_| |   | | | (_| | | | | (_| |  __/ #
-# |_| |_| |_|\__, |   |_|  \__,_|_| |_|\__, |\___| #
-#             __/ |_____                __/ |      #
-#            |___/______|              |___/       #
-####################################################
-"""
-- Returns list of values between start and stop, with step between values
-- Can be used in for cycles
-
-Arguments:
-- start (int): Start value
-- stop (int): End value, not counted in range
-- step (int, optional): Step between values, if not set defaults to 1
-
-Examples:
->>> my_range(0,5,2)
-Output: [0, 2, 4]
-
->>> my_range(0,5)
-Output: [0, 1, 2, 3, 4]
-
-Possible improvements:
-- Change start value to optional
-- Make my_range fully compatible with range
-"""
-
 def my_range(start=1,stop=1,step=1):
+    """
+    - Returns list of values between start and stop, with step between values
+    - Can be used in for cycles
+
+    Arguments:
+    - start (int): Start value
+    - stop (int): End value, not counted in range
+    - step (int, optional): Step between values, if not set defaults to 1
+
+    Examples:
+    >>> my_range(0,5,2)
+    Output: [0, 2, 4]
+
+    >>> my_range(0,5)
+    Output: [0, 1, 2, 3, 4]
+
+    Possible improvements:
+    - Change start value to optional
+    - Make my_range fully compatible with range
+    """
+
     if not isinstance(start, int): # Failsafe if start is not integer error out
         return "error"
     elif not isinstance(stop, int): # Failsafe if stop is not integer error out
@@ -81,41 +64,30 @@ def my_range(start=1,stop=1,step=1):
             start += step # Add step to start
     return output # Return range
 
-
-################################################################
-#                                     _       _                #
-#                                    (_)     | |               #
-#   ___ __ _  ___  ___  __ _ _ __ ___ _ _ __ | |__   ___ _ __  #
-#  / __/ _` |/ _ \/ __|/ _` | '__/ __| | '_ \| '_ \ / _ \ '__| #
-# | (_| (_| |  __/\__ \ (_| | | | (__| | |_) | | | |  __/ |    #
-#  \___\__,_|\___||___/\__,_|_|  \___|_| .__/|_| |_|\___|_|    #
-#                           ______     | |                     #
-#                          |______|    |_|                     #
-################################################################
-"""
-- Returns ciphered (or deciphered) text
-- Use English alphabet as cipher alphabet
-- Print "?" on unknown alphabetic characters (e. g. diacritics)
-
-Arguments:
-- text (str): The text to cipher (or decipher)
-- offset (int, optional): Offset between characters in the English alphabet (e.g. A - C offset=3)
-- mode (int, optional): If set to one, means deciphering
-
-Examples:
-Ciphering
->>> print(caesar_cipher("Hello world!", 3, 0))
-Output: Khoor zruog!
-
-Deciphering
->>> print(caesar_cipher("Khoor zruog!",3,1))
-Output: Hello world!
-
-Possible improvements:
-- Remove the need for the uppercase alphabet
-"""
-
 def caesar_cipher(text="", offset=0, mode=0):
+    """
+    - Returns ciphered (or deciphered) text
+    - Use English alphabet as cipher alphabet
+    - Print "?" on unknown alphabetic characters (e. g. diacritics)
+
+    Arguments:
+    - text (str): The text to cipher (or decipher)
+    - offset (int, optional): Offset between characters in the English alphabet (e.g. A - C offset=3)
+    - mode (int, optional): If set to one, means deciphering
+
+    Examples:
+    Ciphering
+    >>> print(caesar_cipher("Hello world!", 3, 0))
+    Output: Khoor zruog!
+
+    Deciphering
+    >>> print(caesar_cipher("Khoor zruog!",3,1))
+    Output: Hello world!
+
+    Possible improvements:
+    - Remove the need for the uppercase alphabet
+    """
+
     if not isinstance(text, str): # Failsafe if text is not string error out
         return "error"
     elif not isinstance(offset, int): # Failsafe if offset is not integer error out
@@ -136,37 +108,26 @@ def caesar_cipher(text="", offset=0, mode=0):
             output += char # If character is not in alphabet add it to the output
     return output # Return ciphered text
 
-
-############################################
-#                                     _    #
-#                                    | |   #
-#  _ __ ___  _   _     ___  ___  _ __| |_  #
-# | '_ ` _ \| | | |   / __|/ _ \| '__| __| #
-# | | | | | | |_| |   \__ \ (_) | |  | |_  #
-# |_| |_| |_|\__, |   |___/\___/|_|   \__| #
-#             __/ |_____                   #
-#            |___/______|                  #
-############################################
-"""
-- Returns names from names list sorted alphabetically (case-insensitive)
-- Uses a variant of Selection sort, but in descending order
-- Support for string, integer and float values
-
-Arguments:
-- names (list): Names to sort alphabetically
-
-Examples:
->>> print(my_sort(['DeAndre Jordan', 'Deanna Russo', 'Deandre Ayton']))
-Output: ['Deandre Ayton', 'DeAndre Jordan', 'Deanna Russo']
-
->>> print(my_sort(['Alojz', 'Cecil', 'Bob']))
-Output: ['Alojz', 'Bob', 'Cecil']
-
-Possible improvements:
-- Change the algorithm for a more efective one
-"""
-
 def my_sort(names):
+    """
+    - Returns names from names list sorted alphabetically (case-insensitive)
+    - Uses a variant of Selection sort, but in descending order
+    - Support for string, integer and float values
+
+    Arguments:
+    - names (list): Names to sort alphabetically
+
+    Examples:
+    >>> print(my_sort(['DeAndre Jordan', 'Deanna Russo', 'Deandre Ayton']))
+    Output: ['Deandre Ayton', 'DeAndre Jordan', 'Deanna Russo']
+
+    >>> print(my_sort(['Alojz', 'Cecil', 'Bob']))
+    Output: ['Alojz', 'Bob', 'Cecil']
+
+    Possible improvements:
+    - Change the algorithm for a more efective one
+    """
+
     if not isinstance(names, list): # Failsafe if names is not list error out
         return "error"
     output = [] # Define output as an empty list
@@ -186,34 +147,24 @@ def my_sort(names):
         output.insert(0, last) # Insert the alphabetically last element at the beginning of the output list
     return output # Return the sorted output list
 
-
-##############################################
-#   __ _ _                                _  #
-#  / _(_) |                              (_) #
-# | |_ _| |__   ___  _ __   __ _  ___ ___ _  #
-# |  _| | '_ \ / _ \| '_ \ / _` |/ __/ __| | #
-# | | | | |_) | (_) | | | | (_| | (_| (__| | #
-# |_| |_|_.__/ \___/|_| |_|\__,_|\___\___|_| #
-##############################################
-"""
-- Returns n (up to 20575) number from the Fibonacci sequence
-- The argument n must be positive and less than 20575
-
-Arguments:
-- n (int): The order of the desired number from the Fibonacci sequence
-
-Examples:
->>> print(fibonacci(7))
-Output: 13
-
->>> print(fibonacci(15))
-Output: 610
-
-Possible improvements:
-- Add support for larger numbers
-"""
-
 def fibonacci(n):
+    """
+    - Returns n (up to 20575) number from the Fibonacci sequence
+    - The argument n must be positive and less than 20575
+
+    Arguments:
+    - n (int): The order of the desired number from the Fibonacci sequence
+
+    Examples:
+    >>> print(fibonacci(7))
+    Output: 13
+
+    >>> print(fibonacci(15))
+    Output: 610
+
+    Possible improvements:
+    - Add support for larger numbers
+    """
     if not isinstance(n, int): # Failsafe if n is not integer error out
         return "error"
     if n < 0: # Failsafe if n is set to negative value error out
@@ -228,3 +179,22 @@ def fibonacci(n):
         previous = latest # Set previous as latest
         latest = sequence[-1] # Set latest as first number from end of list
     return sequence[n] # Return n number of Fibonacci sequence
+
+
+"""
+Readability:
+- Code is consistent and follows PEP 8 conventions
+
+Validate the program:
+- Validated with all possible inputs
+
+User-friendliness:
+- Well-documented functions
+- Examples
+- Free license
+
+Possible improvements:
+- Clearer error messages
+
+Time spent: cca 12 hours
+"""
