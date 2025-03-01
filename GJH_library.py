@@ -122,24 +122,18 @@ def caesar_cipher(text="", offset=0, mode=0):
         return "error"
     output = "" # Define output as empty string
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"] # Define alphabet
-    alphabet_upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"] # Define uppercase alphabet
     if mode == 1: # Detect if mode is set to deciphering
         offset = -offset # Set mode to deciphering
     for char in text: # Loop through all characters in text
-        if char.isalpha(): # Check if character is alphabetical
-            if char in alphabet: # Check if it is in alphabet list
-                new_number = (alphabet.index(char) + offset) % 26 # Assign number to character and add offset + fix underflow and overflow
+        if char.lower() in alphabet: # If char is in alphabet list, case-insensitive
+            new_number = (alphabet.index(char.lower()) + offset) % 26 # Assign number to character and add offset + fix underflow and overflow, case-insensitive
+            if char.isupper(): # If original character was uppercase
+                new_char = alphabet[new_number].upper() # Change number back to uppercase character
+            else:
                 new_char = alphabet[new_number] # Change number back to character
-                output += new_char # Add character to the list
-            elif char in alphabet_upper: # Check if it is in alphabet_upper list
-                new_number = (alphabet_upper.index(char) + offset) % 26 # Assign number to character and add offset + fix underflow and overflow
-                new_char = alphabet_upper[new_number] # Change number back to character
-                output += new_char # Add character to the list
-            else: # If not in alphabet of alphabet_upper list
-                output += "?" # If character is alphabetical, but is not in alphabet of alphabet_upper assign it question mark (may be due to the use of diacritics)
+            output += new_char # Add character to the list
         else:
-            output += char # If character is not alphabetical add it to the output
-    
+            output += char # If character is not in alphabet add it to the output
     return output # Return ciphered text
 
 
@@ -156,7 +150,7 @@ def caesar_cipher(text="", offset=0, mode=0):
 """
 - Returns names from names list sorted alphabetically (case-insensitive)
 - Uses a variant of Selection sort, but in descending order
-- Argument names must contain only string values
+- Support for string, integer and float values
 
 Arguments:
 - names (list): Names to sort alphabetically
@@ -170,22 +164,27 @@ Output: ['Alojz', 'Bob', 'Cecil']
 
 Possible improvements:
 - Change the algorithm for a more efective one
-"""
+;"""
 
 def my_sort(names):
     if not isinstance(names, list): # Failsafe if names is not list error out
         return "error"
-    output = []  # Define output as an empty list
-    for name in range(len(names)):  # Loop, repeats for the number of elements in names
-        last = names[0]  # Set last as the first element in names
-        for name in names:  # Loop through all elements in names
-            if not isinstance(name, str): # Failsafe if name is not string error out
-                return "error"
-            if name.lower() > last.lower():  # Finds the alphabetically last element in names, case-insensitive
-                last = name  # Set it as the current last element
-        names.remove(last)  # Remove the alphabetically last element from names
-        output.insert(0, last)  # Insert the alphabetically last element at the beginning of the output list
-    return output  # Return the sorted output list
+    output = [] # Define output as an empty list
+    for name in range(len(names)): # Loop, repeats for the number of elements in names
+        last = names[0] # Set last as the first element in names
+        for name in names: # Loop through all elements in names
+            if isinstance(name, str) and isinstance(last, str): # If both name and last are string
+                if name.lower() > last.lower(): # Finds the alphabetically last element in names, case-insensitive
+                    last = name # Set it as the current last element
+            elif not isinstance(name, str) and not isinstance(last, str): # If neither name or last is string
+                if name > last: # Finds the alphabetically last element in names, case-insensitive
+                    last = name # Set it as the current last element
+            else:
+                if str(name) > str(last): # Finds the alphabetically last element in names, convert to string
+                    last = name # Set it as the current last element
+        names.remove(last) # Remove the alphabetically last element from names
+        output.insert(0, last) # Insert the alphabetically last element at the beginning of the output list
+    return output # Return the sorted output list
 
 
 ##############################################
