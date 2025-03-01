@@ -164,7 +164,7 @@ Output: ['Alojz', 'Bob', 'Cecil']
 
 Possible improvements:
 - Change the algorithm for a more efective one
-;"""
+"""
 
 def my_sort(names):
     if not isinstance(names, list): # Failsafe if names is not list error out
